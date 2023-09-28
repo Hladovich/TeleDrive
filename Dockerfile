@@ -21,7 +21,7 @@ COPY api/package.json api/package.json
 COPY web/package.json web/package.json
 #COPY docker/.env .
 RUN yarn cache clean
-RUN yarn install --network-timeout 1000000
+RUN yarn install --ignore-engines
 COPY . .
 RUN yarn workspaces run build
 RUN yarn server prisma migrate deploy
